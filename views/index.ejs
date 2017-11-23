@@ -19,12 +19,15 @@
   </head>
   <body>
     <h1>Ready to do!?</h1>
-    <form action="/register" method="POST" style="margin:150px;">
-      <input id="username" type="text" name="username" placeholder="Username" style="width: 300px" required>
+    <form method="POST" style="margin:150px;">
+
+      <input id="username" type="text" name="username" placeholder="email address" style="width: 300px" required>
       <input id="password" type="password" name="password" placeholder="Password" style="width: 300px" required>
-      <button class="x" type="submit" formaction="/login">Login</button>
-      <button class="x" type="submit" formaction="/register">Register</button>
+      
     </form>
-    </form>
+    <div>
+        <button class="x" type="submit" formaction="/login">Login</button>
+        <button class="x" type="submit" formaction="/register">Register</button>
+      </div>
   </body>
 </html>
