@@ -84,7 +84,7 @@ app.post("/login", (req, res) => {
 
 //To-Do Main PAGE
 app.get("/to-do", (req, res) =>{
-  res.render("todo_index")
+  res.render("test_index")
 });
 
 //Profile Page
