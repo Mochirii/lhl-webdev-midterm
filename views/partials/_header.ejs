@@ -1,4 +1,18 @@
-<header>
-    <a href="/profile">Profile</a>
-    <a href="/to-do">To-Do's</a>
-</header>
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <h2></h2>
+    <% if (user) { %>
+      <form method="POST" action="/logout"><input type="submit" value="Log out"></form>
+      <!-- Logged-out header to display only logo
+      Login and Register buttons to be in body of index page -->
+      <a href="/profile">Profile</a>
+      <a href="/to-do">To-Do's</a>
+    <% } else { %>
+      <img src="../public/images/to_do.png">
+    <% } %>
+  </body>
+</html>
