@@ -1,5 +1,3 @@
-
-
 $(() => {
   $.ajax({
     method: "GET",
@@ -12,3 +10,7 @@ $(() => {
 });
 
 
+module.exports = function(app){
+
+
+};
