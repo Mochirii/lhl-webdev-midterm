@@ -92,6 +92,7 @@ app.get("/profile", (req, res) =>{
   res.render("profile_index")
 });
 
+
 //Edit Page
 app.get("/edit/", (req, res) =>{
   res.render("index")
