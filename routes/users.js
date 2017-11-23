@@ -1,10 +1,10 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const userRoutes = express.Router();
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcrypt");
 
 
 module.exports = (knex) => {
@@ -36,7 +36,7 @@ module.exports = (knex) => {
             .then((user) => {
               req.session.user_id = user[0];
               req.flash('Account creation successful')
-              return res.redirect('/list');
+              return res.redirect('/to_do');
             });
         };
       });
