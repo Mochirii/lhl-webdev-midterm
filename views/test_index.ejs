@@ -1,8 +1,17 @@
 <!DOCTYPE html>
+<head>
+      <!-- App JS -->
+    <script type="text/javascript" src="/scripts/app.js"></script>
+      <!-- CSS -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+</head>
+<body>
+  <%- include partials/_header %>
+</body>
 <div id="myDIV" class="header">
   <h2>My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
+  <input type="text" id="myInput" placeholder="To do...">
+  <button onclick="newItem()">Add Item</button>
 </div>
 
 <ul id="myUL">
