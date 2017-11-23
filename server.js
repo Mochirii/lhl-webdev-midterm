@@ -43,6 +43,25 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//Register Page
+app.get("/register", (req, res) =>{
+  res.render("reg_index");
+});
+
+app.post("/register", (req, res) => {
+    res.redirect('/to-do')
+});
+
+//Login Page
+app.get("/login", (req, res) => {
+  res.render("login_index")
+});
+
+app.post("/login", (req, res) => {
+  res.redirect("/to-do")
+});
+
+
 //To-Do Main PAGE
 app.get("/to-do", (req, res) =>{
   res.render("test_index")
