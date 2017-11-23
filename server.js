@@ -2,17 +2,18 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
+const bodyParser = require("body-parser");
+const sass = require("node-sass-middleware");
+const app = express();
+const cookieSession = require("cookie-session");
 
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-const morgan      = require('morgan');
-const knexLogger  = require('knex-logger');
+const knexConfig = require("./knexfile");
+const knex = require("knex")(knexConfig[ENV]);
+const morgan = require('morgan');
+const knexLogger = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -36,7 +37,7 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+app.use("/users", usersRoutes(knex));
 
 // Welcome Page
 app.get("/", (req, res) => {
@@ -44,12 +45,12 @@ app.get("/", (req, res) => {
 });
 
 //Register Page
-app.get("/register", (req, res) =>{
+app.get("/register", (req, res) => {
   res.render("reg_index");
 });
 
 app.post("/register", (req, res) => {
-    res.redirect('/to-do')
+  res.redirect('/to-do')
 });
 
 //Login Page
@@ -63,12 +64,12 @@ app.post("/login", (req, res) => {
 
 
 //To-Do Main PAGE
-app.get("/to-do", (req, res) =>{
+app.get("/to-do", (req, res) => {
   res.render("test_index")
 });
 
 //Profile Page
-app.get("/profile", (req, res) =>{
+app.get("/profile", (req, res) => {
   res.render("profile_index")
 });
 
