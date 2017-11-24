@@ -10,22 +10,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    
   <link rel="stylesheet" href="/styles/layout.css">
   <link rel="stylesheet" href="/styles/carousel.css">
 </head>
   <body>
-    <%- include partials/_header %>
-  <div class="container col-sm-6 text-center">
-    <img src="/images/to_do.png" height="65px" width="100px">
-    <p>Never feel out of options again.</p>
-    <p>
-      <a href="/login_index">Log in</a><br>
-      <a href="/register">Register</a>
-    </p>
+      
+      <%- include partials/_header %>
+      <div class="container col-sm-6 text-center">
+        <img src="/images/to_do.png" height="65px" width="100px">
+        <p>Never feel out of options again.</p>
 
-  <%- include partials/_footer %>
-  </div>
-
+      <input id="email" type="text" name="email" value='<%= user_email %>' style="width: 300px" required><label>Email Address</label>
+      <input id="password" type="password" name="password" placeholder="******" style="width: 300px" required><label>Password</label>
+      <button class="x" type="submit" formaction="/users/profile">update</button>
+    </form>
   </body>
 </html>
+
+
+  
