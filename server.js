@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const session = require("cookie-session");
-const flash = require('connect-flash');
+
 
 
 const knexConfig = require("./knexfile");
@@ -52,7 +52,7 @@ app.use((req, res, next) => {
   getUser(req.session.user_id)
     .then(user => {
       res.locals.user = user;
-      next();    
+      next();
     });
 })
 // Mount all resource routes
@@ -93,7 +93,7 @@ app.get("/to-do", (req, res) => {
 
 app.get("/profile", (req, res) => {
   let user_id = req.session.user_id[0].id;
-  
+
   knex.first('email').from('users').where('id', user_id).then(function(rows) {
     const user_email = rows.email;
     let templateVars = {
