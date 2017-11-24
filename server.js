@@ -15,8 +15,10 @@ const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
 
+// const expsession= require('express-session')
+
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const userRoutes = require("./routes/users");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -28,6 +30,7 @@ app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -36,8 +39,13 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
 // Mount all resource routes
-app.use("/users", usersRoutes(knex));
+app.use("/users", userRoutes(knex));
 
 // Welcome Page
 app.get("/", (req, res) => {
