@@ -1,15 +1,15 @@
-$(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
-});
+// $(() => {
+//   $.ajax({
+//     method: "GET",
+//     url: "/api/users"
+//   }).done((users) => {
+//     for(user of users) {
+//       $("<div>").text(user.name).appendTo($("body"));
+//     }
+//   });;
+// });
 
-function toDoList() {
+$(function () {
   function addItem () {
     // append to the list
     $("#todo-items").append('<li><span>' + $("#todo").val() + '</span> <small><a href="#edit">Edit</a> &bull; <a href="#delete">Delete</a></small></li>');
@@ -38,4 +38,4 @@ function toDoList() {
     });
     return false;
   });
-};
+});
