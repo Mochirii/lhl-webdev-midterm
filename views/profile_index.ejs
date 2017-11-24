@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Registration</title>
+    
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -9,16 +10,20 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    
   </head>
 
   <body>
-    <%- include partials/_header %>
+      
     <h1>Ready to do?</h1>
-    <form action="/login" method="POST" style="margin:150px;">
-      <input id="email" type="text" name="email" placeholder="E-Mail Address" style="width: 300px" required>
-      <input id="name" type="text" name="name" placeholder="Name" style="width: 300px" required>
-      <input id="age" type="text" name="age" placeholder="Age" style="width: 300px" required>
-      <input type="submit" value="Register">
+    <form method="POST" style="margin:150px;">
+
+      <input id="email" type="text" name="email" value='<%= user_email %>' style="width: 300px" required><label>Email Address</label>
+      <input id="password" type="password" name="password" placeholder="******" style="width: 300px" required><label>Password</label>
+      <button class="x" type="submit" formaction="/users/profile">update</button>
     </form>
   </body>
 </html>
+
+
+  

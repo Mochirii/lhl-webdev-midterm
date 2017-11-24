@@ -1,4 +1,10 @@
 <header>
     <a href="/profile">Profile</a>
     <a href="/to-do">To-Do's</a>
+    <% if (email !== undefined) { %>
+        <%= user_email %>
+        <form action= "/logout" method="POST">
+            <input type="Submit" value="Logout">
+        </form>
+    <% } %>
 </header>
