@@ -59,6 +59,8 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
+console.log()
+
   res.redirect("/to-do")
 });
 
