@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Log In</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <title>to‿do - My list</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/carousel.css">
+</head>
   <body>
     <%- include partials/_header %>
-    <h1>Ready to do?</h1>
-    <form action="/login" method="POST" style="margin:150px;">
-      <input id="username" type="text" name="username" placeholder="Username" style="width: 300px" required>
-      <input id="password" type="password" name="password" placeholder="Password" style="width: 300px" required>
-      <input type="submit" value="Submit">
-    </form>
+
+  <div class="container col-sm-6 text-center">
+    <img src="/images/to_do.png" height="65px" width="100px">
+      <form method="POST" action="/login">
+        <input type="text" name="email" placeholder="E-mail address">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Log in">
+  <%- include partials/_footer %>
+  </div>
+
   </body>
 </html>
