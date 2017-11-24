@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 </head>
-
-
-<p id="addTask"> <b><u> Tasks </u></b> </p>
-<input type='text' id='inputTask'/>
-<input type='button' onclick='makeTodo()' value='Add To List'/>
+<body>
+  <input type="text" id="todo" />
+  <input type="button" value="Add" onclick="toDoList()" id="add" />
+  <ul id="todo-items"></ul>
+</body>
