@@ -9,15 +9,21 @@ $(() => {
   });;
 });
 
-// Create a new list item when clicking on the "Add" button
-function newItem() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
+function makeTodo(){
+    var input = document.getElementById('inputTask').value;
+    var node = document.createElement("p");
+    var textnode = document.createTextNode(input);
+    node.appendChild(textnode);
+    document.getElementById('addTask').appendChild(node);
+
+    var removeTask = document.createElement('input');
+    removeTask.setAttribute('type', 'button');
+    removeTask.setAttribute("value", "Remove");
+    removeTask.setAttribute("id", "removeButton");
+    removeTask.addEventListener('click', function(e) {
+        node.parentNode.removeChild(node);
+    }, false);
+    node.appendChild(removeTask);
+
+
 }
