@@ -11,11 +11,10 @@ module.exports = (knex) => {
 
   userRoutes.post('/register', (req, res) => {
     let invalidSubmission = false;
-    let { email, pass_hash } = req.body;
-
-    if (!email || !pass_hash) {
+    let { email, password } = req.body;
+    if (!email || !password) {
       let invalidSubmission = true;
-      req.flash('Please enter a valid email/password');
+      console.log('Please enter a valid email/password');
       return res.redirect('/');
     };
 
@@ -24,7 +23,7 @@ module.exports = (knex) => {
         for (let user of result) {
           if (email === user.email) {
             let invalidSubmission = true;
-            req.flash('This email is already registered to an existing account');
+            console.log('This email is already registered to an existing account');
             return res.redirect('/');
           };
         };
@@ -32,11 +31,11 @@ module.exports = (knex) => {
         if (!invalidSubmission) {
           knex('users')
             .returning('id')
-            .insert({ email: email, pass_hash: bcrypt.hashSync(pass_hash, bcrypt.genSaltSync()) })
-            .then((user) => {
-              req.session.user_id = user[0];
-              req.flash('Account creation successful')
-              return res.redirect('/to_do');
+            .insert({ email: email, pass_hash: bcrypt.hashSync(password, bcrypt.genSaltSync()) })
+            .then((user_id) => {
+              req.session.user_id = user_id;
+              console.log('Account creation successful');
+              return res.redirect('/to-do');
             });
         };
       });
