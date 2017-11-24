@@ -15,6 +15,8 @@ const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
 
+// const expsession= require('express-session')
+
 // Seperated Routes for each Resource
 const userRoutes = require("./routes/users");
 
@@ -28,6 +30,7 @@ app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -55,7 +58,6 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-  console.log('this is from server.js')
   res.redirect('/to-do')
 });
 
