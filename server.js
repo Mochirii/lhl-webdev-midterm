@@ -53,7 +53,7 @@ app.use((req, res, next) => {
   getUser(req.session.user_id)
     .then(user => {
       res.locals.user = user;
-      next();    
+      next();
     });
 })
 // Mount all resource routes
@@ -87,14 +87,14 @@ console.log()
 
 //To-Do Main PAGE
 app.get("/to-do", (req, res) => {
-  res.render("test_index")
+  res.render("todo_index")
 });
 
 // Profile Page
 
 app.get("/profile", (req, res) => {
   let user_id = req.session.user_id[0].id;
-  
+
   knex.first('email').from('users').where('id', user_id).then(function(rows) {
     console.log(rows, "rows")
     const user_email = rows.email;

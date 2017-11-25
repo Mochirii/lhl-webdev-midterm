@@ -7,14 +7,20 @@
 
     <title>to‿do - Decisions shouldn't make you go (╯°□°）╯︵ ┻━┻</title>
     <!--  TEST COMMENT GIT -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/d29e632bc9.js"></script>
 
+    <script type="text/javascript" src="/scripts/app.js"></script>
     <link rel="stylesheet" href="/styles/layout.css">
+    <script type="text/javascript" src="/scripts/app.js"></script>
     <link rel="stylesheet" href="/styles/carousel.css">
+
   </head>
   <body>
+    <%- include("partials/_visitor_header") %>
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -71,14 +77,27 @@
   </div>
 
   <div class="container col-sm-6 text-center">
-    <img src="/images/to_do.png" height="65px" width="100px">
     <p>Never feel at a loss for options again.</p>
     <p>
-      <a href="/login">Log in</a><br>
-      <a href="/register">Register</a>
+      <section>
+        <form method="POST" >
+            <div class="row">
+              <div class="input-field col s12">
+                <input class="validate" type="text" name="email" placeholder="E-mail address">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input class="password" type="password" name="password" placeholder="Password">
+              </div>
+            </div>
+            <button class="x" type="submit" formaction="/users/login">Login</button>
+            <button class="x" type="submit" formaction="/users/register">Register</button>
+        </form>
+      </section>
     </p>
 
-  <%- include partials/_footer %>
+  <%- include("partials/_footer") %>
   </div>
 
   </body>

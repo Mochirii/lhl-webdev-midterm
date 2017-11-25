@@ -1,0 +1,49 @@
+#mynav {
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  padding: 0 4em;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+#logo {
+  height: 60px;
+  width: 100px;
+}
+
+#visitorlogo {
+  height: 60px;
+  width: 100px;
+}
+
+#mynav .header {
+  color: #e8fdff;
+  line-height: 100px;
+  font-size: 200%;
+}
+
+#mynav .navspan {
+  display: flex;
+  margin: auto;
+}
+
+#logout {
+  background-color: #d6fff0;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 0.5em 0.75em;
+  text-align: center;
+  color: #00a087;
+  font-size: 1.25em;
+  margin-left: auto;
+  margin-right: 2em;
+  margin-top: 0.25em;
+  margin-bottom: 0.6em;
+}
+
+#compose:hover {
+  background: white;
+  color: black;
+}

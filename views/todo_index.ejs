@@ -7,10 +7,11 @@
 
     <title>to‿do - My list</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="https://use.fontawesome.com/d29e632bc9.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/carousel.css">
   </head>
@@ -18,29 +19,12 @@
   <body>
     <%- include partials/_header %>
 
-  <div class="table-responsive">
-    <table class="table table-condensed table-striped ">
-      <tbody>
-        <tr>
-          <td>Book</td>
-          <td>Good Omens</td>
-          <td>Edit</td>
-          <td>Archive</td>
-        </tr>
-        <tr>
-          <td>Movie</td>
-          <td>Gurdians of the Galaxy</td>
-          <td>Edit</td>
-          <td>Archive</td>
-        </tr>
-        <tr>
-          <td>Restaurant</td>
-          <td>The Abattoir</td>
-          <td>Edit</td>
-          <td>Archive</td>
-        </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive container" id="#todolist">
+    <h1>My List</h1>
+<input type="text" id="todo" />
+    <input type="button" value="Add" onclick="toDoList()" id="add" />
+    <ul id="todo-items"></ul>
+
   <footer>
   <%- include partials/_footer %>
   </footer>

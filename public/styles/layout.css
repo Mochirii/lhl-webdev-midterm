@@ -1,0 +1,216 @@
+
+
+body {
+  background-color: #EEE;
+}
+
+body h1 {
+  color: #244751;
+}
+
+/* Header styling */
+.myHeader {
+	background-color:#171219;
+	box-shadow:0 1px 1px #ccc;
+	padding: 20px 40px;
+	height: 80px;
+	color: #ffffff;
+	box-sizing: border-box;
+	top:-100px;
+
+	-webkit-transition:top 0.3s;
+	transition:top 0.3s;
+}
+
+.myHeader .header-limiter {
+	max-width: 1200px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/*	The header placeholder. It is displayed when the header is fixed to the top of the
+	browser window, in order to prevent the content of the page from jumping up. */
+
+.myHeader-placeholder{
+	height: 80px;
+	display: none;
+}
+
+/* Logo */
+
+.myHeader .header-limiter h1 {
+	float: left;
+	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin: 0;
+}
+
+.myHeader .header-limiter h1 span {
+	color: #5383d3;
+}
+
+/* The navigation links */
+
+.myHeader .header-limiter a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.myHeader .header-limiter nav {
+	font:16px Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	float: right;
+}
+
+.myHeader .header-limiter nav a{
+	display: inline-block;
+	padding: 0 5px;
+	text-decoration:none;
+	color: #ffffff;
+	opacity: 0.9;
+}
+
+.myHeader .header-limiter nav a:hover{
+	opacity: 1;
+}
+
+.myHeader .header-limiter nav a.selected {
+	color: #608bd2;
+	pointer-events: none;
+	opacity: 1;
+}
+
+
+body.fixed .myHeader {
+	padding: 10px 40px;
+	height: 50px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+body.fixed .myHeader-placeholder {
+	display: block;
+}
+
+body.fixed .myHeader .header-limiter h1 {
+	font-size: 24px;
+	line-height: 30px;
+}
+
+body.fixed .myHeader .header-limiter nav {
+	line-height: 28px;
+	font-size: 13px;
+}
+
+
+/* Making the header responsive */
+
+@media all and (max-width: 600px) {
+
+	.myHeader {
+		padding: 20px 0;
+		height: 75px;
+	}
+
+	.myHeader .header-limiter h1 {
+		float: none;
+		margin: -8px 0 10px;
+		text-align: center;
+		font-size: 24px;
+		line-height: 1;
+	}
+
+	.myHeader .header-limiter nav {
+		line-height: 1;
+		float:none;
+	}
+
+	.myHeader .header-limiter nav a {
+		font-size: 13px;
+	}
+
+	body.fixed .myHeader {
+		display: none;
+	}
+
+}
+
+/*
+	 We are clearing the body's margin and padding, so that the header fits properly.
+	 We are also adding a height to demonstrate the scrolling behavior. You can remove
+	 these styles.
+ */
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 1500px;
+}
+
+
+/* Footer styling*/
+
+.myFooter{
+	background-color: #171219;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: center;
+	font: normal 18px sans-serif;
+
+	padding: 45px;
+	margin-top: 80px;
+}
+
+.myFooter .footer-company-motto{
+	color:  #8d9093;
+	font-size: 24px;
+	margin: 0;
+}
+
+.myFooter .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+.myFooter .footer-links{
+	list-style: none;
+	font-weight: bold;
+	color:  #ffffff;
+	padding: 35px 0 23px;
+	margin: 0;
+}
+
+.myFooter .footer-links a{
+	display:inline-block;
+	text-decoration: none;
+	color: inherit;
+}
+
+@media (max-width: 600px) {
+
+	.myFooter{
+		padding: 35px;
+	}
+
+	.myFooter .footer-company-motto{
+		font-size: 18px;
+	}
+
+	.myFooter .footer-company-name{
+		font-size: 12px;
+	}
+
+	.myFooter .footer-links{
+		font-size: 14px;
+		padding: 25px 0 20px;
+	}
+
+	.myFooter .footer-links a{
+		line-height: 1.8;
+	}
+}
