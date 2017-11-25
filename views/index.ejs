@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/styles/carousel.css">
   </head>
   <body>
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -70,12 +71,29 @@
     </a>
   </div>
 
-  <div class="container col-sm-6 text-center">
+  <div class="x">
     <img src="/images/to_do.png" height="65px" width="100px">
     <p>Never feel at a loss for options again.</p>
     <p>
-      <a href="/login">Log in</a><br>
-      <a href="/register">Register</a>
+      <container>
+  <form method="POST" >
+      <div class="row">
+        <div class="input-field col s12">
+          <input class="validate" type="text" name="email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="x">
+          <input class="password" type="password" name="password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <button class="x" type="submit" formaction="/users/login">login</button>
+      <button class="x" type="submit" formaction="/users/register">register</button>
+  </form>
+</container>
+
     </p>
 
   <%- include partials/_footer %>

@@ -63,25 +63,67 @@ app.get("/", (req, res) => {
 });
 
 //Register Page
-app.get("/register", (req, res) => {
-  res.render("reg_index");
+app.get("/users/register", (req, res) => {
+  res.render("/");
 });
 
-app.post("/register", (req, res) => {
-  res.redirect('/to-do')
+app.post("/users/register", (req, res) => {
+  res.redirect('/')
 });
 
 //Login Page
-app.get("/login", (req, res) => {
-  res.render("login_index")
+app.get("/users/login", (req, res) => {
+  res.render("/")
 });
 
-app.post("/login", (req, res) => {
+app.post("/users/login", (req, res) => {
 console.log()
 
   res.redirect("/to-do")
 });
 
+
+app.get('/test',(req,res)=>{
+  console.log("we are in the get test method");
+  res.render('test');
+});
+
+//For posting data
+app.post('/test', (req,res)=>{
+
+  //Getting the data from the client and storing it jn the Database;
+  // HARD Coded values;
+  // knex('to_do').insert({
+  //   item: 'Go to Las Vegas',
+  //   user_id: 1,
+  //   category_id: 1,
+  // }).returning('id')
+  // .then((id) => {
+  //     console.log(id);
+  //     console.log("Record inserted");
+  //     res.send({result: true});
+  // }); //then bracket ends here.
+
+
+  //VALUES RECEIVED FROM AJAX CALL;
+
+  var item = req.body.item;
+  var user_id = req.body.user_id;
+  var category_id = req.body.category_id;
+  knex('to_do').insert({
+    item: item,
+    user_id: user_id,
+    category_id: category_id,
+  }).returning('id')
+  .then((id) => {
+      console.log(id);
+      console.log("Record inserted");
+      res.send({result: true});
+  }); //then bracket ends here.
+
+
+
+});
 
 //To-Do Main PAGE
 app.get("/to-do", (req, res) => {
