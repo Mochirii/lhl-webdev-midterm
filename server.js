@@ -16,7 +16,6 @@ const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
-// const expsession= require('express-session')
 
 // Seperated Routes for each Resource
 const userRoutes = require("./routes/users");
