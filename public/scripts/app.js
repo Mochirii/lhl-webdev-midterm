@@ -9,16 +9,21 @@
 //   });;
 // });
 function getFirstWord(string) {
-var firstWord = string.split(" ");
+let firstWord = string.split(" ");
 if(firstWord[0] === "Watch") {
+  knex('to_do').insert({item: string},{user_id: req.session.user_id}, {category_id: "1"})
   console.log(firstWord[0], "I should use the IMDB database")
   } else if (firstWord[0] === "Read") {
+    knex('to_do').insert({item: string},{user_id: req.session.user_id}, {category_id: "2"})
     console.log(firstWord[0], "I should use the Wolfram database")
   } else if (firstWord[0] === "Eat") {
+    knex('to_do').insert({item: string},{user_id: req.session.user_id}, {category_id: "3"})
     console.log(firstWord[0], "I should use the Yelp database")
   } else if (firstWord[0] === "Buy") {
+    knex('to_do').insert({item: string},{user_id: req.session.user_id}, {category_id: "4"})
     console.log(firstWord[0], "I should use the Amazon database")
   } else {
+    knex('to_do').insert({item: string},{user_id: req.session.user_id}, {category_id: "5"})
     console.log("I don't know what to use, go with default")
   }
 }
