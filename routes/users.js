@@ -63,8 +63,8 @@ module.exports = (knex) => {
             loginDetails = true;
             let user_email = email;
             knex('users')
-            .where('email', user_email)
             .returning('id')
+            .where('email', user_email)
             .then((user_id) => {
               console.log({user_id});
               req.session.user_id = user_id;
