@@ -44,16 +44,16 @@ app.use(session({
   keys: ['key1', 'key2']
 }));
 
-function getUser(id){
-  return knex.first('*').from('users').where({id: Number(id) || 0});
-}
-app.use((req, res, next) => {
-  getUser(req.session.user_id)
-    .then(user => {
-      res.locals.user = user;
-      next();
-    });
-})
+// function getUser(id){
+//   return knex.first('*').from('users').where({id: Number(id) || 0});
+// }
+// app.use((req, res, next) => {
+//   getUser(req.session.user_id)
+//     .then(user => {
+//       res.locals.user = user;
+//       next();
+//     });
+// })
 // Mount all resource routes
 app.use("/", userRoutes(knex));
 
