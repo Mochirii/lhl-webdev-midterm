@@ -16,6 +16,11 @@
   width: 100px;
 }
 
+#visitorlogo {
+  height: 60px;
+  width: 100px;
+}
+
 body.fixed .myHeader {
 	padding: 10px 40px;
 	height: 50px;
