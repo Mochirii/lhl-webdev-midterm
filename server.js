@@ -44,16 +44,16 @@ app.use(session({
   keys: ['key1', 'key2']
 }));
 
-function getUser(id){
-  return knex.first('*').from('users').where({id: Number(id) || 0});
-}
-app.use((req, res, next) => {
-  getUser(req.session.user_id)
-    .then(user => {
-      res.locals.user = user;
-      next();
-    });
-})
+// function getUser(id){
+//   return knex.first('*').from('users').where({id: Number(id) || 0});
+// }
+// app.use((req, res, next) => {
+//   getUser(req.session.user_id)
+//     .then(user => {
+//       res.locals.user = user;
+//       next();
+//     });
+// })
 // Mount all resource routes
 app.use("/", userRoutes(knex));
 
@@ -63,29 +63,70 @@ app.get("/", (req, res) => {
 });
 
 //Register Page
-app.get("/register", (req, res) => {
-  res.render("reg_index");
+app.get("/users/register", (req, res) => {
+  res.render("/");
 });
 
-app.post("/register", (req, res) => {
-  res.redirect('/to-do')
+app.post("/users/register", (req, res) => {
+  res.redirect('/')
 });
 
 //Login Page
-app.get("/login", (req, res) => {
-  res.render("login_index")
+app.get("/users/login", (req, res) => {
+  res.render("/")
 });
 
-app.post("/login", (req, res) => {
+app.post("/users/login", (req, res) => {
 console.log()
 
   res.redirect("/to-do")
 });
 
 
+app.get('/test',(req,res)=>{
+  console.log("we are in the get test method");
+  res.render('test');
+});
+
+
+
 //To-Do Main PAGE
 app.get("/to-do", (req, res) => {
   res.render("test_index")
+});
+
+//For posting data
+app.post('/to-do/insert', (req,res)=>{
+
+  //VALUES RECEIVED FROM AJAX CALL;
+
+  var item = req.body.item;
+  var user_id = req.body.user_id;
+  var category_id = req.body.category_id;
+  knex('to_do').insert({
+    item: item,
+    user_id: user_id,
+    category_id: category_id,
+  }).returning('id')
+  .then((id) => {
+      console.log(id);
+      console.log("Record inserted");
+      res.send({result: true});
+  }); //then bracket ends here.
+});
+
+app.post('/to-do/delete', (req,res)=>{
+
+  //VALUES RECEIVED FROM AJAX CALL;
+
+  var item = req.body.item;
+  knex('to_do')
+  .where('id', item)
+   .del()
+  .then(() => {
+
+      res.redirect('/to-do');
+  }); //then bracket ends here.
 });
 
 // Profile Page

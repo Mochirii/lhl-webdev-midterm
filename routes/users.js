@@ -12,22 +12,26 @@ const updatePassword = require("./update_password");
 
 module.exports = (knex) => {
 
-  userRoutes.post('/register', (req, res) => {
+  userRoutes.post('/users/register', (req, res) => {
     let invalidSubmission = false;
     let { email, password } = req.body;
+    
     if (!email || !password) {
       let invalidSubmission = true;
       console.log('Please enter a valid email/password');
       return res.redirect('/');
     };
 
-    knex.first().table('users')
-      .where({email})
-      .then((result) => {
+    knex.select().table('users')
+    .then((result)=> {
+      for (let user of result) {
+        if (email === user.email) {
+          let invalidSubmission = true;
         console.log('Email Taken', result);
-        if(result){
-          res.status(400).send('Email Taken')
-        } else {
+        return res.redirect('/');
+        };
+      };
+      if (!invalidSubmission) {
           knex('users')
           .insert({ email: email, pass_hash: bcrypt.hashSync(password, bcrypt.genSaltSync()) })
           .returning('id')
@@ -41,7 +45,7 @@ module.exports = (knex) => {
       });
   });
 
-  userRoutes.post('/login', (req, res) => {
+  userRoutes.post('/users/login', (req, res) => {
     let loginDetails = false;
     let { email, password } = req.body;
     if (!email || !password) {
@@ -59,8 +63,8 @@ module.exports = (knex) => {
             loginDetails = true;
             let user_email = email;
             knex('users')
-            .where('email', user_email)
             .returning('id')
+            .where('email', user_email)
             .then((user_id) => {
               console.log({user_id});
               req.session.user_id = user_id;
