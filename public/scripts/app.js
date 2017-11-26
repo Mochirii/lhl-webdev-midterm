@@ -13,10 +13,9 @@
 //compare to the if statements. The statements will then dictate which category
 //the todo list item falls into. 1 = Movie, 2 = Book, 3 = Food, 4= Shop, 5 = Miscellaneous
 //If 5 then function will use the API to suggest hits based on Google Custom Search
-
+let categoryNumber = 0;
 
 $(function () {
-
   console.log("Hello");
 
   $('#testbutton').click(function(e){
@@ -29,8 +28,9 @@ $(function () {
     var testData ={
 
       item: input,
-      user_id: req.session.user_id,
-      category_id: 1,
+      user_id: 1,
+      category_id: categoryNumber,
+
     };
 
 
@@ -56,25 +56,23 @@ $(function () {
 
 function getFirstWord(string) {
 let firstWord = string.split(" ");
-let category = 0;
 if(firstWord[0] === "Watch") {
-  category = 1;
-  console.log(firstWord[0], "I should be the movie category")
+  categoryNumber = 1;
+  console.log(firstWord[0], "I should be the movie category, which is: ",categoryNumber)
   } else if (firstWord[0] === "Read") {
-    category = 2;
-    console.log(firstWord[0], "I should be the book category")
+    categoryNumber = 2;
+    console.log(firstWord[0], "I should be the book category, which is: ",categoryNumber)
   } else if (firstWord[0] === "Eat") {
-    category = 3;
-    console.log(firstWord[0], "I should be the restaurant category")
+    categoryNumber = 3;
+    console.log(firstWord[0], "I should be the restaurant category, which is: ",categoryNumber)
   } else if (firstWord[0] === "Buy") {
-    category = 4;
-    console.log(firstWord[0], "I should be the shop category")
+    categoryNumber = 4;
+    console.log(firstWord[0], "I should be the shop category, which is: ",categoryNumber)
   } else {
-    category = 5;
-    console.log("I don't know what to use, go with misc. category")
+    categoryNumber = 5;
+    console.log("I don't know what to use, go with misc. category, which is: ",categoryNumber)
   }
-  return category;
-  console.log(category);
+  return categoryNumber;
 }
 
 
