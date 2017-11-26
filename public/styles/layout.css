@@ -1,7 +1,62 @@
+/* General styling*/
+
+
 body {
   background-color: #EEE;
 }
 
 body h1 {
   color: #244751;
+}
+
+/* Header styling */
+
+
+/* Footer stying*/
+
+/* Form-specific styling */
+ input {
+   margin: 0.25%;
+   border-radius: 4px;
+ }
+
+ button {
+   margin: 0.25%;
+   border-radius: 4px;
+ }
+
+
+.container-fluid {
+    margin: 0 10%;
+}
+
+/* Carousel styling*/
+
+.carousel-indicators {
+  padding-bottom: 1%;
+}
+
+.carousel-inner img {
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+  width: 100%;
+  margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+    size: 200%;
+}
+
+@media (max-width: 600px) {
+  .carousel-caption {
+      display: none; /* Hide carousel text when screen < 600 pixels wide */
+  }
+}
+
+.carousel-inner,.carousel,.item,.container,.fill {
+  height:100%;
+  width:100%;
+  background-position:center center;
+  padding: 1%;
 }
