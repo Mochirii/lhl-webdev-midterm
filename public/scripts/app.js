@@ -54,6 +54,30 @@ $(function () {
   });
 
 
+$('.delete').click(function(e){
+    e.preventDefault();
+    console.log("This is working!")
+
+    // let id = $('#id').attr('value');
+
+    // $.ajax({
+
+    //   method: 'POST',
+    //   url: '/to-do/delete',
+    //   data: "id="+ id,
+    //   dataType: 'json',
+    //   success: function(result){
+    //     console.log("Call was successfull");
+    //     console.log(result);
+    //   },
+    //   error: function(error){
+    //     console.log("there was an error calling the route",error);
+    //   }
+
+    // }); //AJAX Call ends here.
+
+  });
+
 function getFirstWord(string) {
 let firstWord = string.split(" ");
 if(firstWord[0] === "Watch") {
@@ -79,7 +103,7 @@ if(firstWord[0] === "Watch") {
 
   function addItem (item) {
     // append to the list
-    $("#todo-items").append('<li><span>' + item + " || " + categoryNumber + '</span> <small><a href="#delete">Delete</a></small></li>');
+    $("#todo-items").append('<li><span>' + item + " || " + categoryNumber + '</span> <a class="delete" href="#delete" id="delete">Delete</a></class></li>');
     // clear the text
     $(getFirstWord(item))
   }
