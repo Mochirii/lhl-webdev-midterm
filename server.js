@@ -9,15 +9,13 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const session = require("cookie-session");
-const flash = require('connect-flash');
+
 
 
 const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const morgan = require('morgan');
 const knexLogger = require('knex-logger');
-const $ = require("jquery");
-// const expsession= require('express-session')
 
 // Seperated Routes for each Resource
 const userRoutes = require("./routes/users");
@@ -65,29 +63,70 @@ app.get("/", (req, res) => {
 });
 
 //Register Page
-app.get("/register", (req, res) => {
-  res.render("reg_index");
+app.get("/users/register", (req, res) => {
+  res.render("/");
 });
 
-app.post("/register", (req, res) => {
-  res.redirect('/to-do')
+app.post("/users/register", (req, res) => {
+  res.redirect('/')
 });
 
 //Login Page
-app.get("/login", (req, res) => {
-  res.render("login_index")
+app.get("/users/login", (req, res) => {
+  res.render("/")
 });
 
-app.post("/login", (req, res) => {
+app.post("/users/login", (req, res) => {
 console.log()
 
   res.redirect("/to-do")
 });
 
 
+app.get('/test',(req,res)=>{
+  console.log("we are in the get test method");
+  res.render('test');
+});
+
+
+
 //To-Do Main PAGE
 app.get("/to-do", (req, res) => {
   res.render("todo_index")
+});
+
+//For posting data
+app.post('/to-do/insert', (req,res)=>{
+
+  //VALUES RECEIVED FROM AJAX CALL;
+
+  var item = req.body.item;
+  var user_id = req.body.user_id;
+  var category_id = req.body.category_id;
+  knex('to_do').insert({
+    item: item,
+    user_id: user_id,
+    category_id: category_id,
+  }).returning('id')
+  .then((id) => {
+      console.log(id);
+      console.log("Record inserted");
+      res.send({result: true});
+  }); //then bracket ends here.
+});
+
+app.post('/to-do/delete', (req,res)=>{
+
+  //VALUES RECEIVED FROM AJAX CALL;
+
+  var item = req.body.item;
+  knex('to_do')
+  .where('id', item)
+   .del()
+  .then(() => {
+
+      res.redirect('/to-do');
+  }); //then bracket ends here.
 });
 
 // Profile Page
@@ -96,7 +135,6 @@ app.get("/profile", (req, res) => {
   let user_id = req.session.user_id[0].id;
 
   knex.first('email').from('users').where('id', user_id).then(function(rows) {
-    console.log(rows, "rows")
     const user_email = rows.email;
     let templateVars = {
       user_id,
