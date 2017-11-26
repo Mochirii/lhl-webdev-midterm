@@ -18,17 +18,17 @@ let categoryNumber = 0;
 $(function () {
   console.log("Hello");
 
-  $('#testbutton').click(function(e){
+  $('#add').click(function(e){
     e.preventDefault();
 
-    var input = $('#testtask').val();
+    let input = $('#todo').val();
 
     getFirstWord(input);
 
-    var testData ={
+    let testData ={
 
       item: input,
-      user_id: 1,
+      user_id: 2,
       category_id: categoryNumber,
 
     };
@@ -38,7 +38,7 @@ $(function () {
     $.ajax({
 
       method: 'POST',
-      url: '/test',
+      url: '/to-do/insert',
       data: testData,
       dataType: 'json',
       success: function(result){
@@ -77,40 +77,33 @@ if(firstWord[0] === "Watch") {
 
 
 
-//   function addItem (item) {
-//     // append to the list
-//     $("#todo-items").append('<li><span>' + item + '</span> <small><a href="#edit">Edit</a> &bull; <a href="#delete">Delete</a></small></li>');
-//     // clear the text
-//     $(getFirstWord(item))
-//   }
-//   $("#todo").keydown(function (e) {
-//     // if enter key pressed
-//     if (e.which === 13) {
-//       addItem(e.target.value);
-//       e.target.value = '';
-//     }
-//   });
-//   // on clicking the add button
-//   $("#add").click((e) => {
-//     addItem($("#todo").val());
-//     $("#todo").val('')
-//   });
-//   // delegate the events to dynamically generated elements
-//   // for the edit button
-//   $(document).on("click", 'a[href="#edit"]', function () {
-//     // make the span editable and focus it
-//     $(this).closest("li").find("span").prop("contenteditable", true).focus();
-//     return false;
-//   });
-//   // for the delete button
-//   $(document).on("click", 'a[href="#delete"]', function () {
-//     // remove the list item
-//     $(this).closest("li").fadeOut(function () {
-//       $(this).remove();
-//     });
-//     return false;
-//   });
-// });
+  function addItem (item) {
+    // append to the list
+    $("#todo-items").append('<li><span>' + item + " || " + categoryNumber + '</span> <small><a href="#delete">Delete</a></small></li>');
+    // clear the text
+    $(getFirstWord(item))
+  }
+  $("#todo").keydown(function (e) {
+    // if enter key pressed
+    if (e.which === 13) {
+      addItem(e.target.value);
+      e.target.value = '';
+    }
+  });
+  // on clicking the add button
+  $("#add").click((e) => {
+    addItem($("#todo").val());
+    $("#todo").val('')
+  });
 
-}); //MAIN FUNCTION CLOSING BRACET;
+  // for the delete button
+  $(document).on("click", 'a[href="#delete"]', function () {
+    // remove the list item
+    $(this).closest("li").fadeOut(function () {
+      $(this).remove();
+    });
+    return false;
+  });
+});
+ //MAIN FUNCTION CLOSING BRACET;
 

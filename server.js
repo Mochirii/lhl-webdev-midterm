@@ -88,22 +88,15 @@ app.get('/test',(req,res)=>{
   res.render('test');
 });
 
+
+
+//To-Do Main PAGE
+app.get("/to-do", (req, res) => {
+  res.render("test_index")
+});
+
 //For posting data
-app.post('/test', (req,res)=>{
-
-  //Getting the data from the client and storing it jn the Database;
-  // HARD Coded values;
-  // knex('to_do').insert({
-  //   item: 'Go to Las Vegas',
-  //   user_id: 1,
-  //   category_id: 1,
-  // }).returning('id')
-  // .then((id) => {
-  //     console.log(id);
-  //     console.log("Record inserted");
-  //     res.send({result: true});
-  // }); //then bracket ends here.
-
+app.post('/to-do/insert', (req,res)=>{
 
   //VALUES RECEIVED FROM AJAX CALL;
 
@@ -120,14 +113,20 @@ app.post('/test', (req,res)=>{
       console.log("Record inserted");
       res.send({result: true});
   }); //then bracket ends here.
-
-
-
 });
 
-//To-Do Main PAGE
-app.get("/to-do", (req, res) => {
-  res.render("test_index")
+app.post('/to-do/delete', (req,res)=>{
+
+  //VALUES RECEIVED FROM AJAX CALL;
+
+  var item = req.body.item;
+  knex('to_do')
+  .where('id', item)
+   .del()
+  .then(() => {
+
+      res.redirect('/to-do');
+  }); //then bracket ends here.
 });
 
 // Profile Page
