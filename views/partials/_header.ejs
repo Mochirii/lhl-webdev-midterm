@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg">
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div id="navbarNavAltMarkup">
     <span class="navbar-nav">
-			<a class="navbar-logo" href="#"><img .img-responsive alt="to_do" src="images/to_do.png" class="img-responsive" width="100px" height="60px"/></a>
+      <button id="logout" class="navbar-btn" type="submit" method="POST" action="/logout" method>Log&nbsp;out</button>
+			<a class="navbar-logo" href="#"><img .center-block .img-responsive alt="to_do" src="images/to_do.png" class="img-responsive" width="100px" height="60px"/></a>
+      <button id="profile" class="navbar-btn" type="submit" method="GET" action="/users/profile">Profile</button>
     </span>
   </div>
 </nav>

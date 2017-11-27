@@ -5,27 +5,81 @@ body {
   background-color: #EEE;
 }
 
-body h1 {
+body h1 h2 h3 {
   color: #244751;
 }
 
 /* Header styling */
 
+.navbar-nav {
+  display: flex;
+  margin: auto;
+  float: none;
+  float: none;
+  vertical-align: top;
+      text-align: center;
+}
+
+.navbar {
+  top: 0;
+  height: 80px;
+  width: 100%;
+  padding: 0 2em;
+}
+
+
 /* Footer stying*/
+
+
+/* To-do list styling */
+
+#todo-items.delete {
+color #ffff00;
+}
+
+#todo-items span {
+/* Actual content of to-do list*/
+}
+
+
+{
+  color: #ff0000;
+}
 
 
 
 /* Form-specific styling */
  input {
-   margin: 0.25%;
+   margin: 0.5%;
    border-radius: 4px;
+   padding: 0.5%;
  }
 
  button {
-   margin: 0.25%;
-   border-radius: 4px;
+   margin: 0.5%;
+   border-radius: 10px;
+   color: white;
+   background-color: #330066;
  }
 
+#logout {
+  color: white;
+  background-color: #770000;
+  display: flex;
+}
+
+#profile {
+  color: white;
+  display: flex;
+  background-color: #330066;
+}
+
+#add {
+  margin: 0.25%;
+  border-radius: 10px;
+  color: white;
+  background-color: #330066;
+}
 
 .container-fluid {
     margin: 0 10%;
@@ -44,12 +98,16 @@ body h1 {
   margin: auto;
 }
 
-.carousel-caption h3 {
+.carousel-caption h2 {
     color: #fff !important;
-    size: 200%;
 }
 
-@media (max-width: 600px) {
+.carousel-caption p {
+    color: #fff !important;
+    font-size: 150%;
+}
+
+@media (max-width: 400px) {
   .carousel-caption {
       display: none; /* Hide carousel text when screen < 600 pixels wide */
   }
